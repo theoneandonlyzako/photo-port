@@ -1,31 +1,29 @@
-import React from 'react';
-// import { render, cleanup } from '../test-utils';
-import { render, cleanup } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
-import Contact from '..';
+// __tests__/Contact.test.js
+import React from 'react'
+import { render, cleanup } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import ContactForm from '..'
 
-afterEach(cleanup);
+afterEach(cleanup)
 
-describe('Contact componenet renders', () => {
-    // Baseline Test
-    it('renders', () => {
-        render(<Contact />);
-    })
+describe('Contact component renders', () => {
+  it('renders', () => {
+  render(<ContactForm />);
+});
 
-    // snapshot Test
-    it('renders', () => {
-        const { asFragment } = render(<Contact />);
-        // Assert Value Comparison
-        expect(asFragment()).toMatchSnapshot();
-    });
+  it('renders', () => {
+    const { asFragment } = render(<ContactForm />)
+    expect(asFragment()).toMatchSnapshot()
+  })
 })
 
-it('renders', () => {
-    const { queryByTestId } = render(<Contact />)
-    expect(queryByTestId('h1tag')).toHaveTextContent('Contact me')
-})
 
 it('renders', () => {
-    const { queryByTestId } = render(<Contact />)
-    expect(queryByTestId('button')).toHaveTextContent('submit')
+  const { getByTestId } = render(<ContactForm />)
+  expect(getByTestId('h1tag')).toHaveTextContent('Contact me')
+})
+ 
+it('renders', () => {
+  const { getByTestId } = render(<ContactForm />)
+  expect(getByTestId('button')).toHaveTextContent('Submit')
 })
